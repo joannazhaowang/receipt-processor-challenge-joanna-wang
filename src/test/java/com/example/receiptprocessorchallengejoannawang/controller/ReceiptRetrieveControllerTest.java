@@ -43,7 +43,7 @@ class ReceiptRetrieveControllerTest {
     void testGetPointsForNonExistingIdFail() throws Exception {
         Mockito.when(receiptService.getPoints(NON_EXISTING_ID)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/receipts/invalid-id/points"))
+        mockMvc.perform(get("/receipts/" + NON_EXISTING_ID + "/points"))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.description").value(NON_EXISTING_MESSAGE));
     }
